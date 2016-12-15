@@ -33,7 +33,36 @@
 		<input type = "checkbox" >
 			hide question feed
 		</input>
-		<div class = "feed">
+			<div ng-repeat="post in posts | orderBy: '-upvotes'">
+	        <span style="font-size:20px; margin-left:10px;">
+			  <span>
+			    {{post.title}}
+			  </span>
+	        </span>
+	        <span class="pull-right">
+	            {{post.upvotes}}
+	            <span class="glyphicon glyphicon-arrow-up" 
+	            ng-click="incrementUpvotes(post)"></span> 
+	        </span>
+	        <span>
+			  <a href="#/posts/{{post._id}}">Answer</a>
+			</span>
+        </div>
+
+        <form ng-submit="addPost()" ng-show="isLoggedIn()" style="margin-top: 30px;">
+            <h3>Add a New Question</h3>
+
+            <div class="form-group">
+                <input type="text" 
+                class="form-control" 
+                placeholder="Question" 
+                ng-model="title"></input>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+		<div ng-hide="isLoggedIn()">
+		  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
 		</div>
 	</div>
 
