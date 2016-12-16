@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <title> Ripoff Reddit </title>
+    <title> SpeedFeed </title>
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
@@ -44,26 +44,25 @@
 			<img src = "">
 		</div>
 
-		<div class = "reactions">
-		<div id = "confused">
-			<button id = "confusedbutton" class="btn btn-danger" >
-				I'm Confused
-			</button>
+		<div class = "reactions" ng-show="currentUser() =='rosa'";>
+			<div id = "confused">
+				<button id = "confusedbutton" class="btn btn-danger" >
+					I'm Confused
+				</button>
+			</div>
+			<div id = "lecturepace">
+				Overall Pace of Lecture:
+				<br>
+				<br>
+				<button id = "toofast" class="btn btn-default">
+					Too Fast!
+				</button>
+				<button id = "tooslow" class="btn btn-default">
+						Too Slow
+				</button>
+			</div>
 		</div>
-		<div id = "lecturepace">
-			Overall Pace of Lecture:
-			<br>
-			<br>
-			<button id = "toofast" class="btn btn-default">
-				Too Fast!
-			</button>
-			<button id = "tooslow" class="btn btn-default">
-					Too Slow
-			</button>
 
-		</div>
-
-		</div>
 	</div>
 
 	<!-- home template -->
@@ -154,10 +153,6 @@
 	<script type="text/ng-template" id="/register.html">
 			<div class = "questions">
 
-	  <div class="page-header">
-	    <h1> Ripoff Reddit</h1>
-	  </div>
-
 	  <div ng-show="error" class="alert alert-danger row">
 	    <span>{{ error.message }}</span>
 	  </div>
@@ -186,10 +181,6 @@
 	<!-- Login template -->
 	<script type="text/ng-template" id="/login.html">
 			<div class = "questions">
-
-	  <div class="page-header">
-	    <h1>Ripoff Reddit</h1>
-	  </div>
 
 	  <div ng-show="error" class="alert alert-danger row">
 	    <span>{{ error.message }}</span>
