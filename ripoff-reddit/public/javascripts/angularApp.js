@@ -1,4 +1,4 @@
-var app = angular.module('flapperNews', ['ui.router']);
+var app = angular.module('speedFeed', ['ui.router']);
 
 //adding different routes to site
 app.config([
@@ -100,6 +100,12 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
 	  });
 	};
 
+    o.delete = function(id) {
+    return $http.delete('/posts/' + id).success(function(data){
+        console.log(data);
+    });
+    }
+
 	return o;
 
 }]);
@@ -162,6 +168,7 @@ app.controller('MainCtrl', [
 	function($scope, posts, auth) {
 		$scope.posts = posts.posts;
 		$scope.isLoggedIn = auth.isLoggedIn;
+		$scope.currentUser = auth.currentUser;
 
         $scope.addPost = function(){
         	if(!$scope.title || $scope.title === '') { return; }
@@ -178,6 +185,10 @@ app.controller('MainCtrl', [
 		$scope.incrementUpvotes = function(post) {
 		  posts.upvote(post);
 		};
+
+        $scope.deletePost = function(id) {
+        	posts.delete(id);
+        };
     }
 ]);
 
@@ -189,6 +200,10 @@ app.controller('PostsCtrl', [
 	function($scope, posts, post, auth){
 		$scope.post = post;
 		$scope.isLoggedIn = auth.isLoggedIn;
+
+		if(auth.currentUser().substring(0,4) == "prof") {
+			$scope.isProf = 1;
+		}
 
 		$scope.addComment = function(){
 			if($scope.body === '') { return; }

@@ -17,7 +17,7 @@
 </head>
 
 <!-- definition of inline templates -->
-<body ng-app="flapperNews">
+<body ng-app="speedFeed">
 	<div class="container">
 		<nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
 			<ul class="nav navbar-nav">
@@ -51,7 +51,7 @@
 				</button>
 			</div>
 			<div id = "lecturepace">
-				Overall Pace of Lecture:
+				Overall Pace of Lecture: 
 				<br>
 				<br>
 				<button id = "toofast" class="btn btn-default">
@@ -69,7 +69,7 @@
 	<script type="text/ng-template" id="/home.html">
 		<div class = "questions">
 			<form ng-submit="addPost()" class = "posting" ng-show="isLoggedIn()" style="margin-top: 30px;">
-	            <h3>Add a New Question</h3>
+	            <h3>Add a New Question </h3>
 
 	            <div class="form-group">
 	                <input type="text" 
@@ -87,7 +87,8 @@
 				hide question feed
 			</input>
 
-				<div ng-hide="val" ng-repeat="post in posts | orderBy: '-upvotes'">
+				<div ng-hide="val" style="max-width: 300px;" ng-repeat="post in posts | orderBy: '-upvotes'">
+				<div ng-hide="selected.index === $index">
 		        <span style="font-size:20px; margin-left:10px;">
 				  <span>
 				    {{post.title}}
@@ -97,11 +98,17 @@
 		            {{post.upvotes}}
 		            <span class="glyphicon glyphicon-arrow-up" 
 		            ng-click="incrementUpvotes(post)"></span> 
+		            <span class="glyphicon glyphicon-remove" 
+		            ng-click="selected.index = $index; deletePost(post._id)"></span> 
 		        </span>
+		        <br>
 		        <br>
 		        <span>
 				  <a href="#/posts/{{post._id}}" class="btn btn-success" role="button">Answer</a>
 				</span>
+				<br>
+				<br>
+				</div>
 	        </div>
 		</div>
 
@@ -113,12 +120,7 @@
 	<div class = "questions">
 	  <div class="page-header">
 	    <h3>
-	      <a ng-show="post.link" href="{{post.link}}">
-	        {{post.title}}
-	      </a>
-	      <span ng-hide="post.link">
-	        {{post.title}}
-	      </span>
+	       {{post.title}}
 	    </h3>
 	  </div>
 
@@ -130,7 +132,7 @@
 	  </div>
 
 	  <form ng-submit="addComment()"
-	  	ng-show="isLoggedIn()"
+	  	ng-show="isLoggedIn() && isProf"
 	    style="margin-top:30px;">
 	    <h3>Add a new comment</h3>
 

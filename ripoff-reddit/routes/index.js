@@ -137,4 +137,27 @@ router.post('/login', function(req, res, next){
   })(req, res, next);
 });
 
+/* Delete a post. */
+router.delete('/posts/:post', function(req, res) {
+  req.post.comments.forEach(function(id) {
+    Comment.remove({
+      _id: id
+    }, function(err) {
+      if (err) { return next(err)}
+    });
+  })
+  Post.remove({
+    _id: req.params.post
+  }, function(err, post) {
+    if (err) { return next(err); }
+
+    // Get and return all the posts after you delete one
+    Post.find(function(err, posts) {
+      if (err) { return next(err); }
+
+      res.json(posts);
+    });
+  });
+});
+
 module.exports = router;
