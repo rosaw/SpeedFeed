@@ -28,98 +28,90 @@
 			</ul>
 		</nav>
 
+		<div class = "pdf">
+		    <iframe src="https://docs.google.com/viewer?srcid=0B2czhpeUyunkLW5WRHQ5M2o5V1k&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="150px" height="1000px"></iframe>
+		</div>
+
+		<div id = "mainPic">
+			<img src = "/images/Beyond.png" id = "main" style="width:440px;height:330px;">
+		</div>
+
 	    <div class="row">
 	        	<ui-view></ui-view>
-
 	    </div>
-	</div>
 
-	<!-- home template -->
-	<script type="text/ng-template" id="/home.html">
-
-  <div class = "pdf">
-    <iframe src="https://docs.google.com/viewer?srcid=0B2czhpeUyunkLW5WRHQ5M2o5V1k&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="150px" height="1000px"></iframe>
-  </div>
-
-  <div id = "mainPic">
-    <img src = "/images/Beyond.png" id = "main" style="width:440px;height:330px;">
-  </div>
-
-	<div class = "questions">
-		<div class = "posting">
-			<input type = "text" placeholder = "Post a question" />
-			<div id = "button">
-				<button>
-					submit
-				</button>
-			</div>
+		<div class = "ProfReactions">
+			<img src = "">
 		</div>
-		<input type = "checkbox" >
-			hide question feed
-		</input>
-			<div ng-repeat="post in posts | orderBy: '-upvotes'">
-	        <span style="font-size:20px; margin-left:10px;">
-			  <span>
-			    {{post.title}}
-			  </span>
-	        </span>
-	        <span class="pull-right">
-	            {{post.upvotes}}
-	            <span class="glyphicon glyphicon-arrow-up" 
-	            ng-click="incrementUpvotes(post)"></span> 
-	        </span>
-	        <span>
-			  <a href="#/posts/{{post._id}}">Answer</a>
-			</span>
-        </div>
 
-        <form ng-submit="addPost()" ng-show="isLoggedIn()" style="margin-top: 30px;">
-            <h3>Add a New Question</h3>
-
-            <div class="form-group">
-                <input type="text" 
-                class="form-control" 
-                placeholder="Question" 
-                ng-model="title"></input>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Post</button>
-        </form>
-		<div ng-hide="isLoggedIn()">
-		  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
-		</div>
-	</div>
-
-  <div class = "ProfReactions">
-    <img src = "">
-  </div>
-  
-
-	<div class = "reactions">
+		<div class = "reactions">
 		<div id = "confused">
 			<button id = "confusedbutton" >
 				I'm Confused
 			</button>
 		</div>
-    <div id = "lecturepace">
-      Overall Pace of Lecture:
-      <br>
-      <br>
+		<div id = "lecturepace">
+			Overall Pace of Lecture:
+			<br>
+			<br>
 			<button id = "toofast" >
 				Too Fast!
 			</button>
-      <button id = "tooslow" >
-				Too Slow
+			<button id = "tooslow" >
+					Too Slow
 			</button>
 
 		</div>
 
+		</div>
 	</div>
+
+	<!-- home template -->
+	<script type="text/ng-template" id="/home.html">
+		<div class = "questions">
+			<form ng-submit="addPost()" class = "posting" ng-show="isLoggedIn()" style="margin-top: 30px;">
+	            <h3>Add a New Question</h3>
+
+	            <div class="form-group">
+	                <input type="text" 
+	                class="form-control" 
+	                placeholder="Post a question" 
+	                ng-model="title"></input>
+	            </div>
+
+	            <button type="submit" class="btn btn-primary">Submit</button>
+	        </form>
+			<div ng-hide="isLoggedIn()" class = "posting">
+			  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
+			</div>
+			<input type = "checkbox" ng-model = "val" ng-true-value="true" ng-false-value ="false">
+				hide question feed
+			</input>
+
+				<div ng-hide="val" ng-repeat="post in posts | orderBy: '-upvotes'">
+		        <span style="font-size:20px; margin-left:10px;">
+				  <span>
+				    {{post.title}}
+				  </span>
+		        </span>
+		        <span class="pull-right">
+		            {{post.upvotes}}
+		            <span class="glyphicon glyphicon-arrow-up" 
+		            ng-click="incrementUpvotes(post)"></span> 
+		        </span>
+		        <br>
+		        <span>
+				  <a href="#/posts/{{post._id}}" class="btn btn-info" role="button">Answer</a>
+				</span>
+	        </div>
+		</div>
+
 
 	</script>
 
 	<!-- post comment template -->
 	<script type="text/ng-template" id="/posts.html">
+	<div class = "questions">
 	  <div class="page-header">
 	    <h3>
 	      <a ng-show="post.link" href="{{post.link}}">
@@ -155,11 +147,13 @@
 		<div ng-hide="isLoggedIn()">
 		  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
 		</div>
-
+</div>
 	</script>
 
 	<!-- Registration template -->
 	<script type="text/ng-template" id="/register.html">
+			<div class = "questions">
+
 	  <div class="page-header">
 	    <h1> Ripoff Reddit</h1>
 	  </div>
@@ -186,10 +180,13 @@
 	    </div>
 	    <button type="submit" class="btn btn-primary">Register</button>
 	  </form>
+	  </div>
 	</script>
 
 	<!-- Login template -->
 	<script type="text/ng-template" id="/login.html">
+			<div class = "questions">
+
 	  <div class="page-header">
 	    <h1>Ripoff Reddit</h1>
 	  </div>
@@ -216,6 +213,7 @@
 	    </div>
 	    <button type="submit" class="btn btn-primary">Log In</button>
 	  </form>
+	  </div>
 	</script>
 
 </body>
