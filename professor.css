@@ -1,0 +1,208 @@
+.questions {
+	position: absolute;
+	right: 50px;
+	top: 50px;
+	width: 30%;
+}
+
+.posting {
+	background-color: lightgrey;
+	padding-top: 20px;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	margin-bottom: 10px;
+}
+
+
+input[type = "text"] {
+	width: 95%;
+	height: 50px;
+	padding: 5px;
+	font-size: 20px;
+}
+
+input[type = "checkbox"] {
+
+	margin-top: 5px;
+}
+
+#button {
+	margin-top: 10px;
+}
+
+#mainPic {
+	position: absolute;
+	top: 10%;
+	right: 45%;
+}
+
+.feed {
+	background-color: lightgrey;
+	height: 500px;
+	padding: 20px;
+	margin-top: 10px;
+}
+
+#confusedbutton {
+	background-color: Salmon;
+	position: absolute;
+	top: 75%;
+	right: 35%;
+	height: 40px;
+	width: 100px;
+	font-size: 10pt;
+	border: 1px solid;
+	border-radius: 4px;
+}
+
+#lecturepace {
+	border-style: solid;
+	border-width: 1px;
+	padding: 5px;
+	background-color: lightblue;
+
+	position: absolute;
+	font-size: 10pt;
+	max-width: 160px;
+	top: 85%;
+	right: 35%;
+}
+
+#toofast {
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+}
+
+#tooslow {
+	margin-left: 5px;
+	margin-right: 5px;
+	margin-bottom: 5px;
+
+}
+
+
+.colorbar {
+	position: absolute;
+	top: 55%;
+	right: 50.5%;
+}
+
+.percentage {
+	font-size: 18pt;
+	position: relative;
+	bottom: 10%;
+	left: 15px;
+	
+}
+
+
+
+.gradient {
+	position: relative;
+	
+	transform: rotate(-90deg);
+	height: 500px;
+	width: 30px;
+	overflow: hidden;
+	left: 50%;
+	bottom: 250px;
+}
+
+.nopercent {
+	position: relative;
+	top: 27px;
+	right: 102px;
+	
+}
+
+.allpercent {
+	position: relative;
+	top: 11px;
+	left: 430px;
+	
+}
+
+.bar {
+	position: relative;
+	height: 50px;
+	width: 10px;
+	background-color: black;
+	bottom: 528px;
+}
+
+.speedometer {
+	position: absolute;
+	top: 72%;
+	right: 50.5%;
+}
+
+.speed {
+	position: relative;
+	font-size: 16pt;
+}
+
+.meter {
+	position: relative;
+	width: 200px;
+	height: 180px; 
+	background-image: url(http://image.flaticon.com/icons/png/512/17/17968.png);
+	background-size: 200px;
+	right: 38px;
+
+}
+
+.cover {
+	height: 50px;
+	width: 50px;
+	background-color: white;
+	position: relative;
+	bottom: 100px;
+	left: 30px;
+}
+
+.toofast {
+	position: relative;
+	left: 170px;
+	bottom: 80px;
+}
+
+.tooslow {
+	position: relative;
+	bottom: 100px;
+	right: 105px;
+}
+
+.arrow {
+	position: relative;
+	font-size: 40pt;
+	left: 45px;
+	bottom: 210px;
+}
+
+.circle {
+	position: relative;
+	height: 12px;
+	width: 12px;
+	border-radius: 12px;
+	background-color: black;
+	bottom: 220px;
+	left: 55.5px;
+}
+
+.turtle {
+	position: relative;
+	height: 40px;
+	width: 50px;
+	bottom: 245px;
+	right: 95px;
+}
+
+.bunny {
+	position: relative;
+	height: 50px;
+	width: 50px;
+	bottom: 243px;
+	left: 120px;
+}
