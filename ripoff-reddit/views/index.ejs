@@ -146,7 +146,7 @@
 	<script type="text/ng-template" id="/home.html">
 		<div class = "questions">
 			<form ng-submit="addPost()" class = "posting" ng-show="isLoggedIn() && !isProf" style="margin-top: 30px;">
-	            <h3>Add a New Question </h3>
+	            <h3>Add a New Question</h3>
 
 	            <div class="form-group">
 	                <input type="text" 
@@ -158,34 +158,37 @@
 	            <button type="submit" class="btn btn-primary">Submit</button>
 	        </form>
 			<div ng-hide="isLoggedIn()" class = "posting">
-			  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
+			  <h3>Welcome to SpeedFeed! <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> please.</h3>
 			</div>
-			<input type = "checkbox" ng-model = "val" ng-true-value="true" ng-false-value ="false">
-				hide question feed
-			</input>
+
+			<div ng-show="isLoggedIn()">
+				<input type = "checkbox" ng-model = "val" ng-true-value="true" ng-false-value ="false">
+					hide question feed
+				</input>
 
 				<div ng-hide="val" style="max-width: 300px;" ng-repeat="post in posts | orderBy: '-upvotes'">
-				<div ng-hide="selected.index === $index">
-		        <span style="font-size:20px; margin-left:10px;">
-				  <span>
-				    {{post.title}}
-				  </span>
-		        </span>
-		        <span class="pull-right">
-		            {{post.upvotes}}
-		            <span class="glyphicon glyphicon-arrow-up" 
-		            ng-click="!isProf && incrementUpvotes(post)"></span> 
-		            <span class="glyphicon glyphicon-remove" ng-show="isProf"
-		            ng-click="selected.index = $index; deletePost(post._id)"></span> 
-		        </span>
-		        <br>
-		        <br>
-		        <span>
-				  <a href="#/posts/{{post._id}}" class="btn btn-success" role="button">Answer</a>
-				</span>
-				<br>
-				<br>
-				</div>
+					<div ng-hide="selected.index === $index">
+			        <span style="font-size:20px; margin-left:10px;">
+					  <span>
+					    {{post.title}}
+					  </span>
+			        </span>
+			        <span class="pull-right">
+			            {{post.upvotes}}
+			            <span class="glyphicon glyphicon-arrow-up" 
+			            ng-click="!isProf && incrementUpvotes(post)"></span> 
+			            <span class="glyphicon glyphicon-remove" ng-show="isProf"
+			            ng-click="selected.index = $index; deletePost(post._id)"></span> 
+			        </span>
+			        <br>
+			        <br>
+			        <span>
+					  <a href="#/posts/{{post._id}}" class="btn btn-success" role="button">Answer</a>
+					</span>
+					<br>
+					<br>
+					</div>
+	        	</div>
 	        </div>
 		</div>
 

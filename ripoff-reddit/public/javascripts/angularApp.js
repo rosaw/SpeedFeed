@@ -1,8 +1,3 @@
-
-
-
-
-
 var app = angular.module('speedFeed', ['ui.router']);
 
 $(".slides").on('scroll', function () {
@@ -180,8 +175,10 @@ app.controller('MainCtrl', [
 		$scope.currentUser = auth.currentUser;
 
 		$scope.isProf = 0;
-		if(auth.currentUser().substring(0,4) == "prof") {
-			$scope.isProf = 1;
+		if(auth.currentUser()) {
+			if(auth.currentUser().substring(0,4) == "prof") {
+				$scope.isProf = 1;
+			}
 		}
 
         $scope.addPost = function(){
@@ -273,9 +270,12 @@ app.controller('SlideCtrl', [
 		$scope.currentUser = auth.currentUser;
 		$scope.logOut = auth.logOut;
 
-		if(auth.currentUser().substring(0,4) == "prof") {
-			$scope.isProf = 1;
+		if(auth.currentUser()) {
+			if(auth.currentUser().substring(0,4) == "prof") {
+				$scope.isProf = 1;
+			}
 		}
+
 }]);
 
 $(document).ready( function() {
