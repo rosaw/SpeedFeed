@@ -170,6 +170,11 @@ app.controller('MainCtrl', [
 		$scope.isLoggedIn = auth.isLoggedIn;
 		$scope.currentUser = auth.currentUser;
 
+		$scope.isProf = 0;
+		if(auth.currentUser().substring(0,4) == "prof") {
+			$scope.isProf = 1;
+		}
+
         $scope.addPost = function(){
         	if(!$scope.title || $scope.title === '') { return; }
 
@@ -246,7 +251,20 @@ app.controller('NavCtrl', [
 	'$scope',
 	'auth',
 	function($scope, auth){
-	  $scope.isLoggedIn = auth.isLoggedIn;
-	  $scope.currentUser = auth.currentUser;
-	  $scope.logOut = auth.logOut;
+		$scope.isLoggedIn = auth.isLoggedIn;
+		$scope.currentUser = auth.currentUser;
+		$scope.logOut = auth.logOut;
+}]);
+
+app.controller('SlideCtrl', [
+	'$scope',
+	'auth',
+	function($scope, auth){
+		$scope.isLoggedIn = auth.isLoggedIn;
+		$scope.currentUser = auth.currentUser;
+		$scope.logOut = auth.logOut;
+
+		if(auth.currentUser().substring(0,4) == "prof") {
+			$scope.isProf = 1;
+		}
 }]);
