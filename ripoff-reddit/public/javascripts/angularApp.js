@@ -1,4 +1,13 @@
+
+
+
+
+
 var app = angular.module('speedFeed', ['ui.router']);
+
+$(".slides").on('scroll', function () {
+    $(".StressBars").scrollTop($(this).scrollTop());
+ });
 
 //adding different routes to site
 app.config([
@@ -268,3 +277,14 @@ app.controller('SlideCtrl', [
 			$scope.isProf = 1;
 		}
 }]);
+
+$(document).ready( function() {
+  console.log("Yay");
+
+  $(".slides").on('scroll', function () {
+    $(".StressBars").scrollTop($(this).scrollTop());
+  });
+
+});
+
+

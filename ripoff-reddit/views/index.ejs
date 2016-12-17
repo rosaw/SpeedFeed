@@ -5,6 +5,7 @@
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
     <script src="/javascripts/angularApp.js"></script>
     <style>
@@ -33,13 +34,48 @@
 	    </div>
 
 	    <div class = "middle" ng-controller= "SlideCtrl" ng-show="isLoggedIn()">
-			<div class = "pdf">
-			    <iframe src="https://docs.google.com/viewer?srcid=0B2czhpeUyunkLW5WRHQ5M2o5V1k&pid=explorer&efh=false&a=v&chrome=false&embedded=true" width="150px" height="1000px"></iframe>
-			</div>
+			<div class = "pdf" >
+	    		<div class="slides" style="overflow:scroll; height: 600px;">
+		     		<img onclick="mainPic.src=slide1.src" name="slide1" class = "slideEdit" src="slides/img1.jpg" alt="" />
+		    		<img onclick="mainPic.src=slide2.src" name="slide2" class = "slideEdit" src="slides/img2.jpg" alt="" />
+		     		<img onclick="mainPic.src=slide3.src" name="slide3" class = "slideEdit" src="slides/img3.jpg" alt="" />
+		     		<img onclick="mainPic.src=slide4.src" name="slide4" class = "slideEdit" src="slides/img4.jpg" alt="" />
+		     		<img onclick="mainPic.src=slide5.src" name="slide5" class = "slideEdit" src="slides/img5.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide6.src" name="slide6" class = "slideEdit" src="slides/img6.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide7.src" name="slide7" class = "slideEdit" src="slides/img7.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide8.src" name="slide8" class = "slideEdit" src="slides/img8.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide9.src" name="slide9" class = "slideEdit" src="slides/img9.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide10.src" name="slide10" class = "slideEdit" src="slides/img10.jpg" alt="" />
+	      			<img onclick="mainPic.src=slide11.src" name="slide11" class = "slideEdit" src="slides/img11.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide12.src" name="slide12" class = "slideEdit" src="slides/img12.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide13.src" name="slide13" class = "slideEdit" src="slides/img13.jpg" alt="" />
+	      			<img onclick="mainPic.src=slide14.src" name="slide14" class = "slideEdit" src="slides/img14.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide15.src" name="slide15" class = "slideEdit" src="slides/img15.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide16.src" name="slide16" class = "slideEdit" src="slides/img16.jpg" alt="" />
+	    		</div>
+  			</div>
 
+		  	<div class = "StressBars" style="overflow:hidden; height: 600px;">
+		    	<h2 id = "stress1" class = "stressEdit" />
+		    	<h2 id = "stress2" class = "stressEdit" />
+		   		<h2 id = "stress3" class = "stressEdit" />
+		   		<h2 id = "stress4" class = "stressEdit" />
+		   		<h2 id = "stress5" class = "stressEdit" />
+		   		<h2 id = "stress6" class = "stressEdit" />
+		    	<h2 id = "stress7" class = "stressEdit" />
+		    	<h2 id = "stress8" class = "stressEdit" />
+		    	<h2 id = "stress9" class = "stressEdit" />
+		    	<h2 id = "stress10" class = "stressEdit" />
+		    	<h2 id = "stress11" class = "stressEdit" />
+		    	<h2 id = "stress12" class = "stressEdit" />
+		    	<h2 id = "stress13" class = "stressEdit" />
+		    	<h2 id = "stress14" class = "stressEdit" />
+		    	<h2 id = "stress15" class = "stressEdit" />
+		    	<h2 id = "stress16" class = "stressEdit" />
+		  	</div>
 			<div id = "mainPic">
-				<img src = "/images/Beyond.png" id = "main" style="width:440px;height:330px;">
-			</div>
+	    		<img name = "mainPic" src = "slides/img1.jpg" id = "main" style="width:430px">
+	  		</div>
 
 		  	<div class = "feedback" ng-show="isProf">
 		  		<div class = "colorbar">
