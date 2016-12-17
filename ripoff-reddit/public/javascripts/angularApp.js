@@ -67,7 +67,8 @@ function($stateProvider, $urlRouterProvider) {
 
 app.factory('posts', ['$http', 'auth', function($http, auth){
 	var o = {
-	posts: []
+	posts: [],
+	baseTime: Number
 	};
 
 	//Gets current posts in the database
@@ -79,20 +80,62 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
 
 	//Allows creation of posts into the database
 	o.create = function(post) {
-		console.log("I'm creating a new post")
 	  return $http.post('/posts', post, {
 	    headers: {Authorization: 'Bearer '+auth.getToken()}
 	  }).success(function(data){
+
+	  	if(o.posts.length == 0){
+	  		o.baseTime = Date.now();
+	  		post.timeStamp = 1;
+	  		console.log(o.baseTime);
+	  	}
+
+	  	post.upvotes = 0;
+	  	post.flagBool = 0;
+	  	console.log(o.posts.length + 1);
+
+	  	if(o.posts.length != 0){
+	  		post.timeStamp = (Date.now() - o.baseTime) / 100;
+	  	}
+
+	  	console.log(post.timeStamp);
+	  	post.priority = post.upvotes + (1 - (1/post.timeStamp) + 1000*post.flagBool);
+	  	data.upvotes = post.upvotes;
+	  	data.flagBool = post.flagBool;
+	  	data.timeStamp = post.timeStamp;
+	  	data.priority = post.priority;
+	  	console.log(data);
 	    o.posts.push(data);
+	  });
+	};
+
+	//Allows updating of upvotes
+	o.flag = function(post) {
+	  return $http.put('/posts/' + post._id + '/flag', null, {
+	    headers: {Authorization: 'Bearer ' +auth.getToken()}
+	  }).success(function(data){
+
+	  	if(post.flagBool == 0){
+	  		post.flagBool = 1;
+	  		post.priority += 1000;
+	  		console.log(post.priority);
+	  	}else{
+	  		post.flagBool = 0;
+	  		post.priority -= 1000;
+	  		console.log(post.priority);
+	  	}
 	  });
 	};
 
 	//Allows updating of upvotes
 	o.upvote = function(post) {
 	  return $http.put('/posts/' + post._id + '/upvote', null, {
-	    headers: {Authorization: 'Bearer '+auth.getToken()}
+	    headers: {Authorization: 'Bearer ' +auth.getToken()}
 	  }).success(function(data){
 	    post.upvotes += 1;
+	    console.log(post.priority);
+	    post.priority += 1;
+	    console.log(post.priority);
 	  });
 	};
 
@@ -176,20 +219,28 @@ app.controller('MainCtrl', [
 	'auth',
 	function($scope, posts, auth) {
 		$scope.posts = posts.posts;
+		console.log(posts.posts);
+		$scope.baseTime = posts.baseTime;
 		$scope.isLoggedIn = auth.isLoggedIn;
-		$scope.currentUser = auth.currentUser;
 
 		$scope.isProf = 0;
-		if(auth.currentUser().substring(0,4) == "prof") {
-			$scope.isProf = 1;
+		if(auth.currentUser()) {
+			if(auth.currentUser().substring(0,4) == "prof") {
+				$scope.isProf = 1;
+			}
 		}
 
         $scope.addPost = function(){
         	if(!$scope.title || $scope.title === '') { return; }
 
+        	console.log(posts.posts);
 			posts.create({
 				title: $scope.title,
 				link: $scope.link,
+				flagBool: $scope.flagBool,
+  				upvotes: $scope.upvotes,
+  				timeStamp: $scope.timeStamp,
+  				priority: $scope.priority
 			});
 
         	$scope.title = '';
@@ -197,7 +248,13 @@ app.controller('MainCtrl', [
         };
 
 		$scope.incrementUpvotes = function(post) {
+		  console.log(posts.posts);
 		  posts.upvote(post);
+		};
+
+		$scope.submitFlag = function(post) {
+		  console.log(posts.posts);
+		  posts.flag(post);
 		};
 
         $scope.deletePost = function(id) {
