@@ -322,46 +322,114 @@ app.controller('SlideCtrl', [
 
 }]);
 
+
 //Slide color values will be between 0 and 8
-var slideColor = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
 var CurrentSlide = 1;
 
 function changeSlide(Num) {
   CurrentSlide = Num;
 }
 
+function setCharAt(str,index,chr) {
+    if(index > str.length-1) return str;
+    return str.substr(0,index) + chr + str.substr(index+1);
+}
+
 function CheckConfusion() {
-  console.log("Im confused");
-  if (slideColor[CurrentSlide-1] < 8) {
-    slideColor[CurrentSlide-1]++;
-    console.log(slideColor[CurrentSlide-1]);
+  var array = "hello";
+
+  array = localStorage.getItem("slideColor");
+  console.log(localStorage.getItem("slideColor"));
+  console.log(localStorage.getItem("slide"));
+  console.log(array);
+
+  if (parseInt(array[(CurrentSlide-1)]) < 8) {
+
+    var holder = parseInt(array[(CurrentSlide-1)]);
+    holder++;
+
+    array = setCharAt(array, (CurrentSlide-1), holder);
+
+    localStorage.removeItem("slideColor");
+    localStorage.setItem("slideColor", array);
+    console.log(localStorage.getItem("slideColor"));
   }
 
-  if (slideColor[CurrentSlide-1] == 2) {
+  if (parseInt(array[(CurrentSlide-1)]) == 2) {
     $("#stress"+CurrentSlide).css({"background-color": "yellowgreen"});
     //Make light green
   }
-  else if (slideColor[CurrentSlide-1] == 4) {
+  else if (parseInt(array[(CurrentSlide-1)]) == 4) {
     $("#stress"+CurrentSlide).css({"background-color": "yellow"});
     //Make yellow
   }
-  else if (slideColor[CurrentSlide-1] == 6) {
+  else if (parseInt(array[(CurrentSlide-1)]) == 6) {
     $("#stress"+CurrentSlide).css({"background-color": "orange"});
     //Make orange
   }
-  else if (slideColor[CurrentSlide-1] == 8) {
+  else if (parseInt(array[(CurrentSlide-1)]) == 8) {
     $("#stress"+CurrentSlide).css({"background-color": "red"});
     //Make red
   }
 }
 
 $(document).ready( function() {
+
+  setInterval(function() {
+    console.log("hello");
+
+    var array = "hello";
+    array = localStorage.getItem("slideColor");
+
+    for (i = 0; i < 16; ++i) {
+      if (parseInt(array[(i)]) <= 1) {
+
+        $("#stress"+(i+1)).css({"background-color": "limegreen"});
+        continue;
+      }
+      else if (parseInt(array[(i)]) <= 3) {
+        $("#stress"+(i+1)).css({"background-color": "yellowgreen"});
+        continue;
+        //Make light green
+      }
+      else if (parseInt(array[(i)]) <= 4) {
+        $("#stress"+(i+1)).css({"background-color": "yellow"});
+        continue;
+        //Make yellow
+      }
+      else if (parseInt(array[(i)]) <= 6) {
+        $("#stress"+(i+1)).css({"background-color": "orange"});
+        continue;
+        //Make orange
+      }
+      else if (parseInt(array[(i)]) <= 8) {
+        $("#stress"+(i+1)).css({"background-color": "red"});
+        continue;
+        //Make red
+      }
+    }
+  }, 300);
+
+
   console.log("Yay");
+  localStorage.setItem("slide", "hello");
+  //localStorage.removeItem("slideColor");
+  if (localStorage.getItem("slideColor") === null) {
+    localStorage.setItem("slideColor", "0000000000000000");
+  }
 
   $(".slides").on('scroll', function () {
     $(".StressBars").scrollTop($(this).scrollTop());
   });
 
+   $( "#reset" ).click(function() {
+ 	console.log("yoooo");
+	localStorage.clear();
 });
+
+});
+
+
+
 
 
