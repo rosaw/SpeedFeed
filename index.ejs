@@ -35,24 +35,24 @@
 
 	    <div class = "middle" ng-controller= "SlideCtrl" ng-show="isLoggedIn()">
 			<div class = "pdf" >
-				<div class="slides" style="overflow:scroll; height: 670px;">
-					<img onclick="mainPic.src=slide1.src; changeSlide(1);" name="slide1" class = "slideEdit" src="slides/img1.jpg" alt="" />
-					<img onclick="mainPic.src=slide2.src; changeSlide(2);" name="slide2" class = "slideEdit" src="slides/img2.jpg" alt="" />
-					<img onclick="mainPic.src=slide3.src; changeSlide(3);" name="slide3" class = "slideEdit" src="slides/img3.jpg" alt="" />
-					<img onclick="mainPic.src=slide4.src; changeSlide(4);" name="slide4" class = "slideEdit" src="slides/img4.jpg" alt="" />
-					<img onclick="mainPic.src=slide5.src; changeSlide(5);" name="slide5" class = "slideEdit" src="slides/img5.jpg" alt="" />
-					<img onclick="mainPic.src=slide6.src; changeSlide(6);" name="slide6" class = "slideEdit" src="slides/img6.jpg" alt="" />
-					<img onclick="mainPic.src=slide7.src; changeSlide(7);" name="slide7" class = "slideEdit" src="slides/img7.jpg" alt="" />
-					<img onclick="mainPic.src=slide8.src; changeSlide(8);" name="slide8" class = "slideEdit" src="slides/img8.jpg" alt="" />
-					<img onclick="mainPic.src=slide9.src; changeSlide(9);" name="slide9" class = "slideEdit" src="slides/img9.jpg" alt="" />
-					<img onclick="mainPic.src=slide10.src; changeSlide(10);" name="slide10" class = "slideEdit" src="slides/img10.jpg" alt="" />
-					<img onclick="mainPic.src=slide11.src; changeSlide(11);" name="slide11" class = "slideEdit" src="slides/img11.jpg" alt="" />
-					<img onclick="mainPic.src=slide12.src; changeSlide(12);" name="slide12" class = "slideEdit" src="slides/img12.jpg" alt="" />
-					<img onclick="mainPic.src=slide13.src; changeSlide(13);" name="slide13" class = "slideEdit" src="slides/img13.jpg" alt="" />
-					<img onclick="mainPic.src=slide14.src; changeSlide(14);" name="slide14" class = "slideEdit" src="slides/img14.jpg" alt="" />
-					<img onclick="mainPic.src=slide15.src; changeSlide(15);" name="slide15" class = "slideEdit" src="slides/img15.jpg" alt="" />
-					<img onclick="mainPic.src=slide16.src; changeSlide(16);" name="slide16" class = "slideEdit" src="slides/img16.jpg" alt="" />
-			    </div>
+	    		<div class="slides" style="overflow:scroll; height: 670px;">
+		     		<img onclick="mainPic.src=slide1.src" name="slide1" class = "slideEdit" src="slides/img1.jpg" alt="" />
+		    		<img onclick="mainPic.src=slide2.src" name="slide2" class = "slideEdit" src="slides/img2.jpg" alt="" />
+		     		<img onclick="mainPic.src=slide3.src" name="slide3" class = "slideEdit" src="slides/img3.jpg" alt="" />
+		     		<img onclick="mainPic.src=slide4.src" name="slide4" class = "slideEdit" src="slides/img4.jpg" alt="" />
+		     		<img onclick="mainPic.src=slide5.src" name="slide5" class = "slideEdit" src="slides/img5.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide6.src" name="slide6" class = "slideEdit" src="slides/img6.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide7.src" name="slide7" class = "slideEdit" src="slides/img7.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide8.src" name="slide8" class = "slideEdit" src="slides/img8.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide9.src" name="slide9" class = "slideEdit" src="slides/img9.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide10.src" name="slide10" class = "slideEdit" src="slides/img10.jpg" alt="" />
+	      			<img onclick="mainPic.src=slide11.src" name="slide11" class = "slideEdit" src="slides/img11.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide12.src" name="slide12" class = "slideEdit" src="slides/img12.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide13.src" name="slide13" class = "slideEdit" src="slides/img13.jpg" alt="" />
+	      			<img onclick="mainPic.src=slide14.src" name="slide14" class = "slideEdit" src="slides/img14.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide15.src" name="slide15" class = "slideEdit" src="slides/img15.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide16.src" name="slide16" class = "slideEdit" src="slides/img16.jpg" alt="" />
+	    		</div>
   			</div>
 
 		  	<div class = "StressBars" style="overflow:hidden; height: 670px;">
@@ -122,7 +122,7 @@
 
 			<div class = "reactions" ng-hide="isProf">
 				<div id = "confused">
-					<button id = "confusedbutton" onclick = "CheckConfusion()" class="btn btn-danger" >
+					<button id = "confusedbutton" class="btn btn-danger" >
 						I'm Confused
 					</button>
 				</div>
@@ -143,9 +143,10 @@
 	</div>
 
 	<!-- home template -->
-	<script type="text/ng-template" id="/home.html">
+	<script type="text/ng-template" id="/home.html"  >
 		<div class = "questions">
 			<form ng-submit="addPost()" class = "posting" ng-show="isLoggedIn() && !isProf" style = "margin: 10px; font-size: 14pt; padding: 10px;">
+
 	            <h4>Add a New Question </h4>
 
 	            <div class="form-group">
@@ -158,22 +159,20 @@
 	            <button type="submit" class="btn btn-primary">Submit</button>
 	        </form>
 			<div ng-hide="isLoggedIn()" class = "posting">
-			  <h3>Welcome to SpeedFeed! <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> please.</h3>
+			  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
 			</div>
+			<input type = "checkbox" ng-model = "val" ng-true-value="true" ng-false-value ="false" style = "margin: 10px;">
+				hide question feed
+			</input>
 
-			<div ng-show="isLoggedIn()">
-				<input type = "checkbox" ng-model = "val" ng-true-value="true" ng-false-value ="false" style = "margin: 10px;">
-					hide question feed
-				</input>
+			<div ng-hide = "val" style="overflow:scroll; height: 400px; background-color: lightgrey; width:395px; position: relative; left:10px; padding: 15px; margin-top: 10px;">
 
-				<div ng-hide = "val" style="overflow:scroll; height: 400px; background-color: lightgrey; width:395px; position: relative; left:10px; padding: 15px; margin-top: 10px;">
-
-					<div ng-hide="val" style="max-width: 360px; border-bottom: solid; border-width: 1px; padding: 5px;" ng-repeat="post in posts | orderBy: '-priority'" >
-					<div ng-hide="selected.index === $index">
-			        <span style="font-size:20px; margin-left:10px;">
-					  <span>
-					    {{post.title}}
-					  </span>
+				<div ng-hide="val" style="max-width: 360px; border-bottom: solid; border-width: 1px; padding: 5px;" ng-repeat="post in posts | orderBy: '-priority'" >
+				<div ng-hide="selected.index === $index">
+		        <span style="font-size:20px; margin-left:10px;">
+				  <span>
+				    {{post.title}}
+				  </span>
 		        </span>
 		        <span class="pull-left">
 		            <span class="glyphicon glyphicon-flag" ng-show="isProf"
@@ -190,10 +189,12 @@
 		        <br>
 		        <span>
 				  <a href="#/posts/{{post._id}}" class="btn btn-success" role="button" style = "float: right; height: 30px; text-align: center;">Answer</a>
+
 				</span>
 				<br>
 				<br>
 				</div>
+	        </div>
 	        </div>
 		</div>
 
@@ -201,7 +202,7 @@
 	</script>
 
 	<!-- post comment template -->
-	<script type="text/ng-template" id="/posts.html">
+	<script type="text/ng-template" id="/posts.html" >
 	<div class = "questions">
 	  <div class="page-header">
 	    <h3>
@@ -209,7 +210,7 @@
 	    </h3>
 	  </div>
 
-	  <div ng-repeat="comment in post.comments">
+	  <div ng-repeat="comment in post.comments" >
 	    <span style="font-size:20px; margin-left:10px;">
 	      {{comment.body}}
 	    </span>

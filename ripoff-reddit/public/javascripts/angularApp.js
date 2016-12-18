@@ -63,7 +63,6 @@ function($stateProvider, $urlRouterProvider) {
 app.factory('posts', ['$http', 'auth', function($http, auth){
 	var o = {
 	posts: [],
-	baseTime: Number
 	};
 
 	//Gets current posts in the database
@@ -78,23 +77,14 @@ app.factory('posts', ['$http', 'auth', function($http, auth){
 	  return $http.post('/posts', post, {
 	    headers: {Authorization: 'Bearer '+auth.getToken()}
 	  }).success(function(data){
-
-	  	if(o.posts.length == 0){
-	  		o.baseTime = Date.now();
-	  		post.timeStamp = 1;
-	  		console.log(o.baseTime);
-	  	}
+	  	
 
 	  	post.upvotes = 0;
 	  	post.flagBool = 0;
 	  	console.log(o.posts.length + 1);
 
-	  	if(o.posts.length != 0){
-	  		post.timeStamp = (Date.now() - o.baseTime) / 100;
-	  	}
-
-	  	console.log(post.timeStamp);
-	  	post.priority = post.upvotes + (1 - (1/post.timeStamp) + 1000*post.flagBool);
+	  	console.log(o);
+	  	post.priority = post.upvotes + 1000*post.flagBool;
 	  	data.upvotes = post.upvotes;
 	  	data.flagBool = post.flagBool;
 	  	data.timeStamp = post.timeStamp;
@@ -215,7 +205,6 @@ app.controller('MainCtrl', [
 	function($scope, posts, auth) {
 		$scope.posts = posts.posts;
 		console.log(posts.posts);
-		$scope.baseTime = posts.baseTime;
 		$scope.isLoggedIn = auth.isLoggedIn;
 
 		$scope.isProf = 0;
