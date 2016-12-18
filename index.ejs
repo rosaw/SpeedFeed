@@ -1,0 +1,300 @@
+<html>
+
+<head>
+    <title> SpeedFeed </title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    <script src="/javascripts/angularApp.js"></script>
+    <style>
+    .glyphicon-arrow-up {
+        cursor: pointer
+    }
+    </style>
+    <link rel="stylesheet" href="/stylesheets/students.css">
+
+</head>
+
+<!-- definition of inline templates -->
+<body ng-app="speedFeed">
+	<div class="container">
+		<nav class="navbar navbar-default pull-right" ng-controller="NavCtrl">
+			<ul class="nav navbar-nav">
+			  <li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li>
+			  <li ng-show="isLoggedIn()"><a href="" ng-click="logOut()">Log Out</a></li>
+			  <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+			  <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
+			</ul>
+		</nav>
+
+	    <div class="row">
+	        <ui-view></ui-view>
+	    </div>
+
+	    <div class = "middle" ng-controller= "SlideCtrl" ng-show="isLoggedIn()">
+			<div class = "pdf" >
+	    		<div class="slides" style="overflow:scroll; height: 670px;">
+		     		<img onclick="mainPic.src=slide1.src" name="slide1" class = "slideEdit" src="slides/img1.jpg" alt="" />
+		    		<img onclick="mainPic.src=slide2.src" name="slide2" class = "slideEdit" src="slides/img2.jpg" alt="" />
+		     		<img onclick="mainPic.src=slide3.src" name="slide3" class = "slideEdit" src="slides/img3.jpg" alt="" />
+		     		<img onclick="mainPic.src=slide4.src" name="slide4" class = "slideEdit" src="slides/img4.jpg" alt="" />
+		     		<img onclick="mainPic.src=slide5.src" name="slide5" class = "slideEdit" src="slides/img5.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide6.src" name="slide6" class = "slideEdit" src="slides/img6.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide7.src" name="slide7" class = "slideEdit" src="slides/img7.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide8.src" name="slide8" class = "slideEdit" src="slides/img8.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide9.src" name="slide9" class = "slideEdit" src="slides/img9.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide10.src" name="slide10" class = "slideEdit" src="slides/img10.jpg" alt="" />
+	      			<img onclick="mainPic.src=slide11.src" name="slide11" class = "slideEdit" src="slides/img11.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide12.src" name="slide12" class = "slideEdit" src="slides/img12.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide13.src" name="slide13" class = "slideEdit" src="slides/img13.jpg" alt="" />
+	      			<img onclick="mainPic.src=slide14.src" name="slide14" class = "slideEdit" src="slides/img14.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide15.src" name="slide15" class = "slideEdit" src="slides/img15.jpg" alt="" />
+	       			<img onclick="mainPic.src=slide16.src" name="slide16" class = "slideEdit" src="slides/img16.jpg" alt="" />
+	    		</div>
+  			</div>
+
+		  	<div class = "StressBars" style="overflow:hidden; height: 670px;">
+		    	<h2 id = "stress1" class = "stressEdit" />
+		    	<h2 id = "stress2" class = "stressEdit" />
+		   		<h2 id = "stress3" class = "stressEdit" />
+		   		<h2 id = "stress4" class = "stressEdit" />
+		   		<h2 id = "stress5" class = "stressEdit" />
+		   		<h2 id = "stress6" class = "stressEdit" />
+		    	<h2 id = "stress7" class = "stressEdit" />
+		    	<h2 id = "stress8" class = "stressEdit" />
+		    	<h2 id = "stress9" class = "stressEdit" />
+		    	<h2 id = "stress10" class = "stressEdit" />
+		    	<h2 id = "stress11" class = "stressEdit" />
+		    	<h2 id = "stress12" class = "stressEdit" />
+		    	<h2 id = "stress13" class = "stressEdit" />
+		    	<h2 id = "stress14" class = "stressEdit" />
+		    	<h2 id = "stress15" class = "stressEdit" />
+		    	<h2 id = "stress16" class = "stressEdit" />
+		  	</div>
+			<div id = "mainPic">
+	    		<img name = "mainPic" src = "slides/img1.jpg" id = "main" style="width:430px">
+	  		</div>
+
+		  	<div class = "feedback" ng-show="isProf">
+		  		<div class = "colorbar">
+		  			<div class = "percentage">
+		  				Percentage of Students Confused 
+		  			</div>
+		  			<div class = "nopercent">
+		  				0%
+		  			</div>
+		  			<div class = "allpercent">
+		  				100%
+		  			</div>
+		  			<img src = "https://i.stack.imgur.com/h8cD5.jpg" class = "gradient">
+		  			<div class = "bar">
+		  			</div>
+
+		  		</div>
+
+		  		<div class = "speedometer">
+		  			<div class = "speed">
+		  				Lecture Speed
+		  			</div>
+		  			<div class = "meter">
+		  			</div>
+		  			<div class = "cover">
+		  			</div>
+		  			<div class = "toofast">
+		  				Too Fast!
+		  			</div>
+		  			<div class = "tooslow">
+		  				Too Slow
+		  			</div>
+		  			<div class = "arrow">
+		  				&#8593
+		  			</div>
+		  			<div class = "circle">
+		  			</div>
+		  			<img src = "https://s-media-cache-ak0.pinimg.com/originals/f7/82/0e/f7820eafad414df636809c74210c8e67.png" class = "turtle">
+		  			<img src = "http://previews.123rf.com/images/barbulat/barbulat1108/barbulat110800126/10304202-Hare-running-on-white-Stock-Vector-hare-rabbit-cartoon.jpg" class = "bunny">
+
+		  		</div>
+
+		  	</div>
+
+			<div class = "reactions" ng-hide="isProf">
+				<div id = "confused">
+					<button id = "confusedbutton" class="btn btn-danger" >
+						I'm Confused
+					</button>
+				</div>
+				<div id = "lecturepace">
+					Overall Pace of Lecture: 
+					<br>
+					<br>
+					<button id = "toofast" class="btn btn-default">
+						Too Fast!
+					</button>
+					<button id = "tooslow" class="btn btn-default">
+							Too Slow
+					</button>
+				</div>
+			</div>
+	</div>
+
+	</div>
+
+	<!-- home template -->
+	<script type="text/ng-template" id="/home.html"  >
+		<div class = "questions">
+			<form ng-submit="addPost()" class = "posting" ng-show="isLoggedIn() && !isProf" style = "margin: 10px; font-size: 14pt; padding: 10px;">
+
+	            <h4>Add a New Question </h4>
+
+	            <div class="form-group">
+	                <input type="text" 
+	                class="form-control" 
+	                placeholder="Post a question" 
+	                ng-model="title"></input>
+	            </div>
+
+	            <button type="submit" class="btn btn-primary">Submit</button>
+	        </form>
+			<div ng-hide="isLoggedIn()" class = "posting">
+			  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can add a post.</h3>
+			</div>
+			<input type = "checkbox" ng-model = "val" ng-true-value="true" ng-false-value ="false" style = "margin: 10px;">
+				hide question feed
+			</input>
+
+			<div ng-hide = "val" style="overflow:scroll; height: 400px; background-color: lightgrey; width:395px; position: relative; left:10px; padding: 15px; margin-top: 10px;">
+
+				<div ng-hide="val" style="max-width: 360px; border-bottom: solid; border-width: 1px; padding: 5px;" ng-repeat="post in posts | orderBy: '-priority'" >
+				<div ng-hide="selected.index === $index">
+		        <span style="font-size:20px; margin-left:10px;">
+				  <span>
+				    {{post.title}}
+				  </span>
+		        </span>
+		        <span class="pull-left">
+		            <span class="glyphicon glyphicon-flag" ng-show="isProf"
+		            ng-click="submitFlag(post)"></span> 
+	        	</span>
+		        <span class="pull-right">
+		            {{post.upvotes}}
+		            <span class="glyphicon glyphicon-arrow-up" 
+		            ng-click="!isProf && incrementUpvotes(post)"></span> 
+		            <span class="glyphicon glyphicon-remove" ng-show="isProf"
+		            ng-click="selected.index = $index; deletePost(post._id)"></span> 
+		        </span>
+		        <br>
+		        <br>
+		        <span>
+				  <a href="#/posts/{{post._id}}" class="btn btn-success" role="button" style = "float: right; height: 30px; text-align: center;">Answer</a>
+
+				</span>
+				<br>
+				<br>
+				</div>
+	        </div>
+	        </div>
+		</div>
+
+
+	</script>
+
+	<!-- post comment template -->
+	<script type="text/ng-template" id="/posts.html" >
+	<div class = "questions">
+	  <div class="page-header">
+	    <h3>
+	       {{post.title}}
+	    </h3>
+	  </div>
+
+	  <div ng-repeat="comment in post.comments" >
+	    <span style="font-size:20px; margin-left:10px;">
+	      {{comment.body}}
+	    </span>
+	   	by {{comment.author}}
+	  </div>
+
+	  <form ng-submit="addComment()"
+	  	ng-show="isLoggedIn() && isProf"
+	    style="margin-top:30px;">
+	    <h3>Add a new comment</h3>
+
+	    <div class="form-group">
+	      <input type="text"
+	      class="form-control"
+	      placeholder="Comment"
+	      ng-model="body"></input>
+	    </div>
+	    <button type="submit" class="btn btn-primary">Post</button>
+	  </form>
+
+		<div ng-hide="isLoggedIn()">
+		  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+		</div>
+</div>
+	</script>
+
+	<!-- Registration template -->
+	<script type="text/ng-template" id="/register.html">
+			<div class = "questions">
+
+	  <div ng-show="error" class="alert alert-danger row">
+	    <span>{{ error.message }}</span>
+	  </div>
+
+	  <form ng-submit="register()"
+	    style="margin-top:30px;">
+	    <h3>Register</h3>
+
+	    <div class="form-group">
+	      <input type="text"
+	      class="form-control"
+	      placeholder="Username"
+	      ng-model="user.username"></input>
+	    </div>
+	    <div class="form-group">
+	      <input type="password"
+	      class="form-control"
+	      placeholder="Password"
+	      ng-model="user.password"></input>
+	    </div>
+	    <button type="submit" class="btn btn-primary">Register</button>
+	  </form>
+	  </div>
+	</script>
+
+	<!-- Login template -->
+	<script type="text/ng-template" id="/login.html">
+			<div class = "questions">
+
+	  <div ng-show="error" class="alert alert-danger row">
+	    <span>{{ error.message }}</span>
+	  </div>
+
+	  <form ng-submit="logIn()"
+	    style="margin-top:30px;">
+	    <h3>Log In</h3>
+
+	    <div class="form-group">
+	      <input type="text"
+	      class="form-control"
+	      placeholder="Username"
+	      ng-model="user.username"></input>
+	    </div>
+	    <div class="form-group">
+	      <input type="password"
+	      class="form-control"
+	      placeholder="Password"
+	      ng-model="user.password"></input>
+	    </div>
+	    <button type="submit" onClick="window.location.reload();" class="btn btn-primary">Log In</button>
+	  </form>
+	  </div>
+	</script>
+
+</body>
+
+</html>
