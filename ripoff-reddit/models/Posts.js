@@ -12,10 +12,21 @@ var PostSchema = new mongoose.Schema({
 
 PostSchema.methods.upvote = function(cb) {
   this.upvotes += 1;
-  //this.priority += 1;
+  this.priority += 1;
   console.log('this.priority:');
   console.log(this.priority);
 
+  this.save(cb);
+};
+
+PostSchema.methods.flag = function(cb) {
+  if(this.flagBool == 0){
+    this.flagBool = 1;
+    this.priority += 1000;
+  }else{
+    this.flagBool = 0;
+    this.priority -= 1000;
+  }
   this.save(cb);
 };
 

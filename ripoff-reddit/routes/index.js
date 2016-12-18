@@ -83,7 +83,7 @@ router.put('/posts/:post/upvote', auth, function(req, res, next) {
 
 /* Flag post route */
 router.put('/posts/:post/flag', auth, function(req, res, next) {
-  req.post.upvote(function(err, post){
+  req.post.flag(function(err, post){
     if (err) { return next(err); }
 
     res.json(post);
