@@ -176,8 +176,8 @@
 					  </span>
 		        </span>
 		        <span class="pull-left">
-		            <span class="glyphicon glyphicon-flag" ng-show="isProf"
-		            ng-click="submitFlag(post)"></span> 
+		            <span class="glyphicon glyphicon-flag"
+		            ng-click="isProf && submitFlag(post)" ng-style="post.flagBool && {'color':'blue'}" ></span> 
 	        	</span>
 		        <span class="pull-right">
 		            {{post.upvotes}}
