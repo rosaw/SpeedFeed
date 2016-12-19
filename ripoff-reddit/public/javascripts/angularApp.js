@@ -328,6 +328,41 @@ var CurrentSlide = 1;
 
 function changeSlide(Num) {
   CurrentSlide = Num;
+
+	var array = "hello";
+  array = localStorage.getItem("slideColor");
+  console.log(array);
+
+  if (parseInt(array[Num-1]) <= 1) {
+    $("#barz").removeAttr('style');
+    $("#barz").css('right', 50);
+    //document.getElementById("barz").style.right = "0px";
+  }
+  else if (parseInt(array[Num-1]) <= 3) {
+    $("#barz").removeAttr('style');
+    $("#barz").css('left', 50);
+    //document.getElementById("barz").style.right = "0px";
+    //Make light green
+  }
+  else if (parseInt(array[Num-1]) <= 5) {
+    $("#barz").removeAttr('style');
+    $("#barz").css('left', 140);
+    //document.getElementById("barz").style.right = "0px";
+    //Make yellow
+  }
+  else if (parseInt(array[Num-1]) <= 7) {
+    $("#barz").removeAttr('style');
+    $("#barz").css('left', 240);
+    //document.getElementById("barz").style.right = "0px";
+    //Make orange
+  }
+  else if (parseInt(array[Num-1]) <= 9) {
+    $("#barz").removeAttr('style');
+    $("#barz").css('left', 360);
+    //document.getElementById("barz").style.right = "0px";
+    //Make red
+}
+
 }
 
 function setCharAt(str,index,chr) {
@@ -343,7 +378,7 @@ function CheckConfusion() {
   console.log(localStorage.getItem("slide"));
   console.log(array);
 
-  if (parseInt(array[(CurrentSlide-1)]) < 8) {
+  if (parseInt(array[(CurrentSlide-1)]) <= 8) {
 
     var holder = parseInt(array[(CurrentSlide-1)]);
     holder++;
@@ -376,8 +411,8 @@ function CheckConfusion() {
 $(document).ready( function() {
 
   setInterval(function() {
-    console.log("hello");
 
+	changeSlide(CurrentSlide);
     var array = "hello";
     array = localStorage.getItem("slideColor");
 
@@ -392,17 +427,17 @@ $(document).ready( function() {
         continue;
         //Make light green
       }
-      else if (parseInt(array[(i)]) <= 4) {
+      else if (parseInt(array[(i)]) <= 5) {
         $("#stress"+(i+1)).css({"background-color": "yellow"});
         continue;
         //Make yellow
       }
-      else if (parseInt(array[(i)]) <= 6) {
+      else if (parseInt(array[(i)]) <= 7) {
         $("#stress"+(i+1)).css({"background-color": "orange"});
         continue;
         //Make orange
       }
-      else if (parseInt(array[(i)]) <= 8) {
+      else if (parseInt(array[(i)]) <= 9) {
         $("#stress"+(i+1)).css({"background-color": "red"});
         continue;
         //Make red
@@ -423,7 +458,6 @@ $(document).ready( function() {
   });
 
    $( "#reset" ).click(function() {
- 	console.log("yoooo");
 	localStorage.clear();
 });
 
