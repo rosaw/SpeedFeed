@@ -97,29 +97,16 @@
 				New Lecture
 			</button>
 
-		  		<div class = "speedometer">
-		  			<div class = "speed">
-		  				Lecture Speed
-		  			</div>
-		  			<div class = "meter">
-		  			</div>
-		  			<div class = "cover">
-		  			</div>
-		  			<div class = "toofast">
-		  				Too Fast!
-		  			</div>
-		  			<div class = "tooslow">
-		  				Too Slow
-		  			</div>
-		  			<div class = "arrow">
-		  				&#8593
-		  			</div>
-		  			<div class = "circle">
-		  			</div>
-		  			<img src = "https://s-media-cache-ak0.pinimg.com/originals/f7/82/0e/f7820eafad414df636809c74210c8e67.png" class = "turtle">
-		  			<img src = "http://previews.123rf.com/images/barbulat/barbulat1108/barbulat110800126/10304202-Hare-running-on-white-Stock-Vector-hare-rabbit-cartoon.jpg" class = "bunny">
-
-		  		</div>
+		  		<div class = "speedometer" style="text-align: center; background-color: lightgreen; padding: 10px; border-style: solid; left: 460px">
+		           
+		              <h5>
+		                Speed Index:
+		              </h5>
+				  		<h5 class = "SpeedIndex" ">
+		                0
+		              </h5>
+		          
+		  			
 
 		  	</div>
 
@@ -133,10 +120,10 @@
 					Overall Pace of Lecture: 
 					<br>
 					<br>
-					<button id = "toofast" class="btn btn-default">
+					<button id = "toofast" onclick = "adjustSpeed(1)" class="btn btn-default">
 						Too Fast!
 					</button>
-					<button id = "tooslow" class="btn btn-default">
+					<button id = "tooslow" onclick = "adjustSpeed(0)" class="btn btn-default">
 							Too Slow
 					</button>
 				</div>

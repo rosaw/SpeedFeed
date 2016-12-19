@@ -4,6 +4,8 @@ $(".slides").on('scroll', function () {
     $(".StressBars").scrollTop($(this).scrollTop());
  });
 
+var PaceHolder = 0;
+
 //adding different routes to site
 app.config([
 '$stateProvider',
@@ -408,9 +410,31 @@ function CheckConfusion() {
   }
 }
 
+function adjustSpeed(num) {
+  var holderInt = parseInt(localStorage.getItem("pace"));
+  if (num == 0 ) {
+    holderInt--;
+  }
+  else {
+    holderInt++;
+  }
+
+  localStorage.removeItem("Oldpace");
+  localStorage.setItem("Oldpace", localStorage.getItem("pace"));
+
+  localStorage.removeItem("pace");
+  localStorage.setItem("pace", holderInt);
+  console.log(localStorage.getItem("Oldpace"));
+  console.log(localStorage.getItem("pace"));
+}
+
 $(document).ready( function() {
 
   setInterval(function() {
+
+    var holderInt = parseInt(localStorage.getItem("pace"));
+    console.log(holderInt);
+    $(".SpeedIndex").html(holderInt);
 
 	changeSlide(CurrentSlide);
     var array = "hello";
@@ -449,10 +473,20 @@ $(document).ready( function() {
   console.log("Yay");
   localStorage.setItem("slide", "hello");
   //localStorage.removeItem("slideColor");
-  if (localStorage.getItem("slideColor") === null) {
+  if (localStorage.getItem("slideColor") == null) {
     localStorage.setItem("slideColor", "0000000000000000");
   }
 
+  //localStorage.removeItem("pace");
+  if (localStorage.getItem("pace") == null) {
+    localStorage.setItem("pace", "0");
+  }
+  //localStorage.removeItem("Oldpace");
+  if (localStorage.getItem("Oldpace") == null) {
+    localStorage.setItem("Oldpace", "0");
+  }
+  
+  console.log(localStorage.getItem("pace"));
   $(".slides").on('scroll', function () {
     $(".StressBars").scrollTop($(this).scrollTop());
   });
